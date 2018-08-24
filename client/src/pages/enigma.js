@@ -7,7 +7,8 @@ class Enigma extends Component {
     super();
     this.state = {
       keyPressed: false,
-      keyValue: ''
+      keyValue: '',
+      lastEvent: null
     };
   }
 
@@ -23,11 +24,19 @@ class Enigma extends Component {
 
   onKeyDown = e => {
     // validate
-    this.setState({ keyPressed: true, keyValue: e.key });
+    const { lastEvent, keyPressed } = this.state;
+    if ((lastEvent && lastEvent === e.key) || keyPressed) {
+      return;
+    }
+
+    this.setState({ keyPressed: true, keyValue: e.key, lastEvent: e.key });
   };
 
   onKeyUp = e => {
-    this.setState({ keyPressed: false, keyValue: e.key });
+    const { lastEvent } = this.state;
+    if (lastEvent === e.key) {
+      this.setState({ keyPressed: false, keyValue: e.key, lastEvent: '' });
+    }
   };
 
   render() {

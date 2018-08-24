@@ -19,15 +19,15 @@ class Keyboard extends Component {
   componentWillReceiveProps = newProps => {
     const { keys } = this.state;
     const { keyPressed, keyValue } = newProps;
-    if (this.isValidKey(keyValue, keys)) {
+    if (this.isValidKey(keyValue, keys, keyPressed)) {
       keys[keyValue] = keyPressed;
-      this.setState({ keyPressed: !keyPressed, keyValue, keys });
+      this.setState({ keyPressed, keyValue, keys });
     }
+    console.log(keyValue, keyPressed, keys);
   };
 
-  isValidKey = (key, keys) => {
-    console.log(keys[key]);
-    if (keys.hasOwnProperty(key) && !keys[key]) return true;
+  isValidKey = (key, keys, keyPressed) => {
+    if (keys.hasOwnProperty(key) && keys[key] !== keyPressed) return true;
     return false;
   };
 
