@@ -23,7 +23,6 @@ class Keyboard extends Component {
       keys[keyValue] = keyPressed;
       this.setState({ keyPressed, keyValue, keys });
     }
-    console.log(keyValue, keyPressed, keys);
   };
 
   isValidKey = (key, keys, keyPressed) => {
