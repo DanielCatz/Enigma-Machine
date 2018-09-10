@@ -2,14 +2,12 @@ import React from 'react';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-
 import PropTypes from 'prop-types';
 
 const Rotor = props => {
-  const { name, value, label } = props;
+  const { name, value, label, handleSelectChange } = props;
   return (
     <FormControl>
       <InputLabel shrink htmlFor="rotor-label-placeholder">
@@ -17,10 +15,11 @@ const Rotor = props => {
       </InputLabel>
       <Select
         value={value}
-        onChange={props.handleSelectChange}
+        onChange={handleSelectChange}
         input={<Input name={name} id="rotor-label-placeholder" />}
         displayEmpty
         name={name}
+        autoWidth
       >
         <MenuItem value={1}>1</MenuItem>
         <MenuItem value={2}>2</MenuItem>
@@ -52,15 +51,5 @@ const Rotor = props => {
     </FormControl>
   );
 };
-
-// ButtonKey.propTypes = {
-//   buttonKey: PropTypes.string,
-//   wasPressed: PropTypes.bool
-// };
-
-// ButtonKey.defaultProps = {
-//   buttonKey: '0',
-//   wasPressed: false
-// };
 
 export default Rotor;

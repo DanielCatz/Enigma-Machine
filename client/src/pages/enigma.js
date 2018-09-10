@@ -5,6 +5,7 @@ import Keyboard from './components/keyboard';
 import Navbar from './components/navbar';
 import XTextbox from './components/xtextbox';
 import Rotor from './components/rotor';
+import PlugBoard from './components/plugboard';
 
 class Enigma extends Component {
   constructor() {
@@ -102,6 +103,9 @@ class Enigma extends Component {
         <Navbar />
         <div className="container">
           <h2>Enigma</h2>
+          <Rotor name="rotor1" label="Rotor 1" value={this.state.rotor1} handleSelectChange={this.onChangeSelect} />
+          <Rotor name="rotor2" label="Rotor 2" value={this.state.rotor2} handleSelectChange={this.onChangeSelect} />
+          <Rotor name="rotor3" label="Rotor 3" value={this.state.rotor3} handleSelectChange={this.onChangeSelect} />
           <Grid container spacing={24}>
             <Grid item xs={6} sm={6}>
               <Card>
@@ -121,9 +125,7 @@ class Enigma extends Component {
             </Grid>
           </Grid>
           <Keyboard keys={availableKeys} keyPressed={this.state.keyPressed} keyValue={this.state.keyValue} />
-          <Rotor name="rotor1" label="Rotor 1" value={this.state.rotor1} handleSelectChange={this.onChangeSelect} />
-          <Rotor name="rotor2" label="Rotor 2" value={this.state.rotor2} handleSelectChange={this.onChangeSelect} />
-          <Rotor name="rotor3" label="Rotor 3" value={this.state.rotor3} handleSelectChange={this.onChangeSelect} />
+          <PlugBoard />
           <p>{message} </p>
         </div>
       </div>

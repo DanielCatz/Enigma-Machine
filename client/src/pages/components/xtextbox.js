@@ -10,6 +10,9 @@ const XTextbox = props => (
     multiline
     fullWidth
     rows="3"
+    InputLabelProps={{
+      shrink: true
+    }}
     placeholder={props.placeholder}
     value={props.text}
     onChange={props.handleTextChange}
